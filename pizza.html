@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Delivery</title>
+    <style>
+        #loading-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #f3f3f3;
+        }
+
+        #progress {
+            width: 0;
+            height: 100%;
+            background-color: #4caf50;
+        }
+
+        #pizza-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading-bar">
+        <div id="progress"></div>
+    </div>
+
+    <div id="pizza-container">
+        <img src="pizza.jpg" alt="Pizza">
+        <h1>Your pizza is here!</h1>
+    </div>
+
+    <script>
+        function move() {
+            var elem = document.getElementById("progress");
+            var width = 1;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    document.getElementById("loading-bar").style.display = "none";
+                    document.getElementById("pizza-container").style.display = "flex";
+                } else {
+                    width++;
+                    elem.style.width = width + '%';
+                }
+            }
+        }
+
+        // Call the move function after the page is fully loaded
+        window.onload = move;
+    </script>
+</body>
+
+</html>
